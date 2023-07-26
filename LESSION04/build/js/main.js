@@ -16,6 +16,10 @@ logMsg(add(2, 8));
 let subtract = function (c, d) {
     return c - d;
 };
+// using interfaces
+// interface mathFunction{
+//   (a:number, b:number):number
+// }
 let multiply = function (c, d) {
     return c * d;
 };
@@ -24,3 +28,10 @@ let division = (c, d) => {
 };
 logMsg(multiply(2, 2));
 logMsg(division(5, 0));
+// optional parameters
+const addAll = (a, b, c) => {
+    if (typeof c !== "undefined") {
+        return a + b + c;
+    }
+    return a + b;
+};

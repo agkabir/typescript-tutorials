@@ -36,12 +36,12 @@ let subtract = function (c: number, d: number): number {
 };
 
 // usisng type alises
-// type mathFunction = (a: number, b: number) => number;
+type mathFunction = (a: number, b: number) => number;
 
 // using interfaces
-interface mathFunction{
-  (a:number, b:number):number
-}
+// interface mathFunction{
+//   (a:number, b:number):number
+// }
 
 let multiply: mathFunction = function (c, d) {
   return c * d;
@@ -54,3 +54,11 @@ let division: mathFunction = (c, d) => {
 logMsg(multiply(2, 2));
 logMsg(division(5, 0));
 
+// optional parameters
+
+const addAll = (a: number, b: number, c?: number): number => {
+  if (typeof c !== "undefined") {
+    return a + b + c;
+  }
+  return a + b;
+};
