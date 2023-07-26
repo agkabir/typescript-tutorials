@@ -72,3 +72,10 @@ logMsg(sumAll(2, 3));
 logMsg(sumAll(undefined, 3));
 
 
+// Rest parameters
+const total = (a:number, ...nums: number[]): number => {
+  return a + nums.reduce((prev, curr)=>prev+curr)
+}
+
+logMsg(total(3, 5, 7, 9)) // in this example 3 will be assigen to a and rest will be assigned to nums
+
