@@ -63,7 +63,7 @@ const addAll = (a: number, b: number, c?: number): number => {
   return a + b;
 };
 // default param value
-const sumAll = (a: number=10, b: number, c: number = 2): number => {
+const sumAll = (a: number = 10, b: number, c: number = 2): number => {
   return a + b + c;
 };
 
@@ -71,11 +71,36 @@ logMsg(addAll(2, 3));
 logMsg(sumAll(2, 3));
 logMsg(sumAll(undefined, 3));
 
-
 // Rest parameters
-const total = (a:number, ...nums: number[]): number => {
-  return a + nums.reduce((prev, curr)=>prev+curr)
+const total = (a: number, ...nums: number[]): number => {
+  return a + nums.reduce((prev, curr) => prev + curr);
+};
+
+logMsg(total(3, 5, 7, 9)); // in this example 3 will be assigned to a and rest will be assigned to nums
+
+// never type
+const createError = (errMsg: string): never => {
+  throw new Error(errMsg);
+};
+
+// example of a never type
+const infinite = () => {
+  let i: number = 1;
+  while (true) {
+    i++;
+    // this is a never return type because it goes infinitely to make it normal we have to terminate it
+    if (i > 100) break; // now it is return type void
+  }
+};
+
+// custom type guard
+const isNumber = (value: any): boolean => {
+  return typeof value==='number'?true:false
 }
 
-logMsg(total(3, 5, 7, 9)) // in this example 3 will be assigen to a and rest will be assigned to nums
-
+// use of type never
+const numberOrString = (value: number | string): string => {
+  if (typeof value === 'string') return 'string'
+  if (isNumber(value)) return "number";
+  return createError('This should never happen!')
+}
