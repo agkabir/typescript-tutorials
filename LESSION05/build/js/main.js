@@ -14,3 +14,9 @@ const addOrConcat = (a, b, c) => {
 let myVal = addOrConcat(2, 2, 'concat');
 // Obs ! TS sees no problem here but a string is returned
 let nextVal = addOrConcat(2, 2, "concat");
+// use cases of Assertion THE DOM
+const img = document.querySelector('img');
+const myImg = document.getElementById("#img");
+const nextImg = document.getElementById("#img");
+img.src;
+myImg.src;

@@ -20,3 +20,10 @@ let myVal: string = addOrConcat(2, 2, 'concat') as string
 // Obs ! TS sees no problem here but a string is returned
 let nextVal: number = addOrConcat(2, 2, "concat") as number;
 
+// use cases of Assertion THE DOM
+const img = document.querySelector('img')! 
+const myImg = document.getElementById("#img") as HTMLImageElement;
+const nextImg = <HTMLImageElement>document.getElementById("#img");
+
+img.src
+myImg.src
