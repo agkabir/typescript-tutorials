@@ -44,47 +44,76 @@ console.log(Sumaya.getLang());
 // console.log(Sumaya.lang) // this is not possible because lang is protected
 
 // class interface
-interface Musician{
-    name: string,
-    instrument: string,
-    play(action:string): string
+interface Musician {
+  name: string;
+  instrument: string;
+  play(action: string): string;
 }
-class Guitarist implements Musician{
-    name: string;
-    instrument: string;
+class Guitarist implements Musician {
+  name: string;
+  instrument: string;
 
-    constructor(name: string, instrument: string) {
-        this.name = name
-        this.instrument = instrument
-    }
-    play(action: string) {
-        return `${this.name} ${action} the ${this.instrument}`
-    }
-}
- 
-const Page = new Guitarist('Jimmy', 'guitar')
-console.log(Page.play('strums'))
-
-///////////////////////////////////
-class Peeps{
-    static count: number = 0
-    
-    static getCount(): number{
-        return Peeps.count
-    }
-
-    public id: number
-    
-    constructor(public name:string) {
-        this.name = name
-        this.id = ++Peeps.count
-    }
+  constructor(name: string, instrument: string) {
+    this.name = name;
+    this.instrument = instrument;
+  }
+  play(action: string) {
+    return `${this.name} ${action} the ${this.instrument}`;
+  }
 }
 
-const John = new Peeps('John')
+const Page = new Guitarist("Jimmy", "guitar");
+console.log(Page.play("strums"));
+
+////////////////////// static member
+class Peeps {
+  static count: number = 0;
+
+  static getCount(): number {
+    return Peeps.count;
+  }
+
+  public id: number;
+
+  constructor(public name: string) {
+    this.name = name;
+    this.id = ++Peeps.count;
+  }
+}
+
+const John = new Peeps("John");
 const Steve = new Peeps("Steve");
 const Amy = new Peeps("Amy");
 
-console.log(Peeps.count)
-console.log(`Nmae is ${John.name} and id is ${John.id}`)
+console.log(Peeps.count);
+console.log(`Nmae is ${John.name} and id is ${John.id}`);
 console.log(`Nmae is ${Amy.name} and id is ${Amy.id}`);
+
+//////////// get and set method in class
+class Bands{
+    private dataState: string[]
+    
+    constructor() {
+        this.dataState = []
+    }
+
+    public get data(): string[]{
+        return this.dataState
+    }
+
+    public set data(value: string[]) {
+        if (Array.isArray(value) && value.every(el => typeof el === 'string')) {
+            this.dataState = value
+            return
+        }
+        else throw new Error('Param is not an array of strings')   
+    }
+}
+
+const MyBands = new Bands()
+MyBands.data = ['LRB', 'Artcell']
+console.log(MyBands.data)
+MyBands.data = ["Nagor Bawl", "Coke studio Bangla", 'Ark'];
+console.log(MyBands.data);
+MyBands.data = [...MyBands.data,'Miles'];
+console.log(MyBands.data);

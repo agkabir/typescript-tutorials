@@ -40,9 +40,9 @@ class Guitarist {
         return `${this.name} ${action} the ${this.instrument}`;
     }
 }
-const Page = new Guitarist('Jimmy', 'guitar');
-console.log(Page.play('strums'));
-///////////////////////////////////
+const Page = new Guitarist("Jimmy", "guitar");
+console.log(Page.play("strums"));
+////////////////////// static member
 class Peeps {
     static getCount() {
         return Peeps.count;
@@ -54,9 +54,33 @@ class Peeps {
     }
 }
 Peeps.count = 0;
-const John = new Peeps('John');
+const John = new Peeps("John");
 const Steve = new Peeps("Steve");
 const Amy = new Peeps("Amy");
 console.log(Peeps.count);
 console.log(`Nmae is ${John.name} and id is ${John.id}`);
 console.log(`Nmae is ${Amy.name} and id is ${Amy.id}`);
+//////////// get and set method in class
+class Bands {
+    constructor() {
+        this.dataState = [];
+    }
+    get data() {
+        return this.dataState;
+    }
+    set data(value) {
+        if (Array.isArray(value) && value.every(el => typeof el === 'string')) {
+            this.dataState = value;
+            return;
+        }
+        else
+            throw new Error('Param is not an array of strings');
+    }
+}
+const MyBands = new Bands();
+MyBands.data = ['LRB', 'Artcell'];
+console.log(MyBands.data);
+MyBands.data = ["Nagor Bawl", "Coke studio Bangla", 'Ark'];
+console.log(MyBands.data);
+MyBands.data = [...MyBands.data, 'Miles'];
+console.log(MyBands.data);
