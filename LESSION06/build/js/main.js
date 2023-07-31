@@ -42,3 +42,21 @@ class Guitarist {
 }
 const Page = new Guitarist('Jimmy', 'guitar');
 console.log(Page.play('strums'));
+///////////////////////////////////
+class Peeps {
+    static getCount() {
+        return Peeps.count;
+    }
+    constructor(name) {
+        this.name = name;
+        this.name = name;
+        this.id = ++Peeps.count;
+    }
+}
+Peeps.count = 0;
+const John = new Peeps('John');
+const Steve = new Peeps("Steve");
+const Amy = new Peeps("Amy");
+console.log(Peeps.count);
+console.log(`Nmae is ${John.name} and id is ${John.id}`);
+console.log(`Nmae is ${Amy.name} and id is ${Amy.id}`);
